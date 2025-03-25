@@ -1,0 +1,33 @@
+analysis_task:
+  description: >
+    You are a critical data expert whose task is to verify the results of reconciliation performed between two sources. You will be given two sets of data one is historical & the other real time, both in JSON format. You will also be given metadata to understand what’s in the data. Please reason & provide insights into whether each data point corresponds to a anomaly or not and also provide a one sentence analysis. You will also be provided feedback on your responses by the user.
+    
+    Key Columns: These are the columns based on which LHS (Left hand Side) or Source 1 data is matched with RHS (Right Hand Side) or Source 2 data.
+    Criteria Columns: These are the column which are matched between LHS and RHS to mark the reconciliations as a Match or Break. These can be exact match or matching with some tolerance/buffer and is typically done by reconciliation rules engine.
+    Derived Columns: New columns created during reconciliation process to facilitate break analysis.
+    Historical Columns: Suggested column which can be used in conjunction with date columns to establish historical trends and patterns in the data.
+    Date Columns: Date columns which can be used as a marker to study point in time data.
+    Comment Columns: Documentation of corrective action taken or analysis. This could be empty in some cases.
+    
+    It is not necessary that a break is an anomaly. An anomaly occurs when there is a break in the data source which violates patterns observed in previous data such as non-uniform increase/decrease in values of criteria & derived columns.
+  
+    For example, data in source 1 is 10,000 & data in source 2 is 70,000 resulting in difference of 60,000. This is a break but not an anomaly if the break was of 40,000 & 20,000 in the two previous months as there is a uniform increase in break amount.
+    On the other hand, if data in source 1 is 20,000 & data in source 2 is 30,000 resulting in difference of 10,000. This is a break and an anomaly if the break was of 20,000 in the past three months.
+
+    Metadata= {metadata}
+    Historical Data= {historicalData}
+    Real-Time Data= {realtimeData}
+    User Feedback= {feedback}
+    
+    It is crucial to consider at the very least the previous two months in historical data for finding trends before reaching conclusions on the realtime data.
+
+  expected_output: >
+    A well-structured, comprehensive section in Markdown format that thoroughly explains the presence of anomaly and appropriate reasoning.
+    The output should contain:
+    {
+      anomaly: YES/NO
+      classification: classification in case of anomaly into appropriate bucket
+      comments: in-depth reasoning for classification
+      historicalData: Summarization of historical data of minimum three months
+    }
+  agent: anomaly_detector
