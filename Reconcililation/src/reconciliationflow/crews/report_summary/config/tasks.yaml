@@ -1,0 +1,20 @@
+reporting_task:
+  description: >
+    Review the context you got and provide thoughts on each data point presented to you.
+    Make sure the report is detailed and contains any and all relevant information.
+    Each data point needs to contain the following:
+    - Break status
+    - Provide accurate break resolution summaries in detail
+    - Classify the anomalies into appropriate buckets on the basi of free-text reasoning provided in the report. The classification should make use of how the current data deviates from historical trend.
+    
+    Report: {report}
+
+  expected_output: >
+    A fully fledged report for each data point in the input formatted as JSON string in pandas orient of records. The summary for each data should contain the following:
+    -a suitable identifier for each data point
+    -break status
+    -break resolution
+    -anomaly: yes/no
+    -classification bucket of anomaly
+
+  agent: report_summary

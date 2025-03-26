@@ -1,0 +1,7 @@
+{
+    "keyColumns": ["Company", "Account", "AU", "Currency"],
+    "criteriaColumns": ["GL Balance", "IHub Balance"],
+    "derivedColumns": ["Balance Difference"],
+    "historicalColumns": ["Account", "Secondary Account", "Primary Account"],
+    "dateColumns": ["As of Date"]
+}

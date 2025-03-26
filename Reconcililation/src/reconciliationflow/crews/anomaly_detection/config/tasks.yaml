@@ -20,14 +20,11 @@ analysis_task:
     User Feedback= {feedback}
     
     It is crucial to consider at the very least the previous two months in historical data for finding trends before reaching conclusions on the realtime data.
-
+    Any increase or decrease that occurs should be uniform across for it to not be an anomaly. 
+    
+    It is also critical that the agent be skeptical about the feedback received & verified aginst the rule set before acting on it.
   expected_output: >
     A well-structured, comprehensive section in Markdown format that thoroughly explains the presence of anomaly and appropriate reasoning.
-    The output should contain:
-    {
-      anomaly: YES/NO
-      classification: classification in case of anomaly into appropriate bucket
-      comments: in-depth reasoning for classification
-      historicalData: Summarization of historical data of minimum three months
-    }
+    Also mention the break status.
+
   agent: anomaly_detector

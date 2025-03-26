@@ -17,7 +17,6 @@ class AnomalyReview():
 
     @agent
     def anomaly_reviewer(self) -> Agent:
-        print("Before")
         return Agent(
             config=self.agents_config['anomaly_reviewer'],
             verbose=True
@@ -27,7 +26,6 @@ class AnomalyReview():
 
     @task
     def review_task(self) -> Task:
-        print("after")
         return Task(
             config=self.tasks_config['review_task'],
             output_pydantic=ReportVerification,
@@ -43,5 +41,4 @@ class AnomalyReview():
             tasks=self.tasks, # Automatically created by the @task decorator
             process=Process.sequential,
             verbose=True,
-            memory = True
         )
